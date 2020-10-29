@@ -2,7 +2,7 @@
 # from odoo import http
 
 
-class Model-viewer(http.Controller):
+class ModelViewer(http.Controller):
     @http.route('/model-viewer/model-viewer/', auth='public')
     def index(self, **kw):
         return "Hello, world"
