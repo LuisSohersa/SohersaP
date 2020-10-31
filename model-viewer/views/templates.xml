@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <template id="assets_frontend" inherit_id="website.assets_frontend" name="site">
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="model-viewer">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/model-viewer/static/src/css/style.css" />
                 <script type="text/javascript" src="/model-viewer/static/src/js/site.js"></script>
@@ -8,7 +8,7 @@
                 <script language="JavaScript" src="https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.min.js?v=v7.*"></script>
             </xpath>
         </template>
-        <template id="model-viewer.index" name="Site template">
+        <template id="index" name="Site template">
             <t t-call="portal.frontend_layout">
             <t t-set="additional_title">Test</t>
                 <div id="MyViewerDiv"></div>
