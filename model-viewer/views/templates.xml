@@ -1,24 +1,30 @@
 <odoo>
     <data>
-<!--
-        <template id="listing">
-          <ul>
-            <li t-foreach="objects" t-as="object">
-              <a t-attf-href="#{ root }/objects/#{ object.id }">
-                <t t-esc="object.display_name"/>
-              </a>
-            </li>
-          </ul>
+        <template id="assets_frontend" inherit_id="website.assets_frontend" name="site">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/model-viewer/static/src/css/style.css" />
+                <script type="text/javascript" src="/model-viewer/static/src/js/site.js"></script>
+                <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/style.min.css?v=v7.*" type="text/css" />
+                <script language="JavaScript" src="https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.min.js?v=v7.*"></script>
+            </xpath>
         </template>
-        <template id="object">
-          <h1><t t-esc="object.display_name"/></h1>
-          <dl>
-            <t t-foreach="object._fields" t-as="field">
-              <dt><t t-esc="field"/></dt>
-              <dd><t t-esc="object[field]"/></dd>
+        <template id="model-viewer.index" name="Site template">
+            <t t-call="portal.frontend_layout">
+            <t t-set="additional_title">Test</t>
+                <div id="MyViewerDiv"></div>
             </t>
-          </dl>
+
+            <script>
+                var myViewerDiv = document.getElementById('MyViewerDiv');
+                var viewer = new Autodesk.Viewing.Private.GuiViewer3D(myViewerDiv);
+                var options = {
+                    'env' : 'Local',
+                    'document' : 'http://developer-autodesk.github.io/translated-models/dwfx-sample-house/f0224dd3-8767-45c1-ff99-5c9c881b9fee/0.svf'
+                };
+                Autodesk.Viewing.Initializer(options, function() {
+                    viewer.start(options.document, options);
+                });
+            </script>
         </template>
--->
     </data>
 </odoo>

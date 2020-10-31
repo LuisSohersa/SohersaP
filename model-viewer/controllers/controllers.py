@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 
-
-class ModelViewer(http.Controller):
-    @http.route('/model-viewer/model-viewer/', auth='public')
+class Site(http.Controller):
+    @http.route('/model', website="true", auth='public')
     def index(self, **kw):
-        return "Hello, world"
-
+        return http.request.render('model-viewer.index',{})
 #     @http.route('/model-viewer/model-viewer/objects/', auth='public')
 #     def list(self, **kw):
 #         return http.request.render('model-viewer.listing', {
